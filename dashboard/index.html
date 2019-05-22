@@ -3,11 +3,33 @@
   <head>
     <title>Kubernetes RBAC Visualiser</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
   </head>
   <body>
+    <!--
+    <header class="site-header">
+      <nav class="navbar navbar-dark fixed-top bg-gradient-primary flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
+          <img class="logo d-inline-block align-top" alt="Appvia Logo" src="img/appvia_logo_white.svg">
+        </a>
+      </nav>
+    </header> -->
+
+    <nav class="navbar navbar-default navbar-static-top bg-gradient-primary">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">
+            <img class="logo" alt="Appvia Logo" src="img/appvia_logo_white.svg">
+          </a>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <h1>RBAC</h1>
-      <div class="row findings"></div>
+      <div class="row">
+        <div class="col-sm-12 findings"></div>
+      </div>
       <div class="row">
         <hr>
         <div class="col-sm-4">
@@ -35,6 +57,7 @@
                 Reveal Results
               </label>
             </div>
+
             <button type="button" class="btn btn-success" id="btn-search">Search</button>
             <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button>
           <!-- </form> -->
@@ -60,7 +83,7 @@
         $.getJSON("data/" + $.urlParam('cluster') + "/rbac-tree.json", function(rbac) {
 
           var $searchableTree = $('#treeview-searchable').treeview({
-            data: [ rbac ], 
+            data: [ rbac ],
             expandIcon: 'glyphicon glyphicon-chevron-right',
             collapseIcon: 'glyphicon glyphicon-chevron-down',
             showTags: true,
